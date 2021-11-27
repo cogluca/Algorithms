@@ -1,41 +1,46 @@
+package exercise3;
 
-public class Exercise1 {
+import java.util.HashMap;
 
+public class UnionFindSet<T> {
 
-    public static <T> T makeSet(T x) {
-
-        if(x != null) {
-            x.parent = x;
-        }
+    HashMap<T, UnionFindSetNode<T>> map;
 
 
-
+    public UnionFindSet() {
+        map = new HashMap<>();
     }
 
 
-    public static <T> T unionSet(T x, T y) {
+    public void makeSet(T x) {
+        if (x != null) {
+            map.put(x, new UnionFindSetNode<>(x));
+        }
+    }
+
+
+    public void unionSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
         linkSet(findSet(x), findSet(y));
-
     }
 
 
-    public static <T> T linkSet(T x, T y) {
+    public void linkSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
+        if (x.getRank() > y.getRank()) {
+            y.setParent(x);
+        } else
+            x.setParent(y);
+        if (x.getRank() == y.getRank()) {
+            y.setRank(y.getRank() + 1);
+        }
 
-        if(x.rank > y.rank) {
-            y.parent = x;
-        }
-        else(x.parent == y) {
-            if(x.rank == y.rank) {
-                y.rank = y.rank + 1;
-            }
-        }
     }
 
-    public static <T> T findSet(T x) {
-        if(x != x.parent){
-            x.p = findSet(x.p)
+    public UnionFindSetNode<T> findSet(UnionFindSetNode<T> x) {
+        UnionFindSetNode<T> treeClimbingNode = x;
+        if (!x.equals(x.getParent())) {
+            treeClimbingNode = findSet(treeClimbingNode);
         }
-        return x.parent;
+        return treeClimbingNode;
     }
 
 }
