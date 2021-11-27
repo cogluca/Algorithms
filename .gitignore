@@ -1,0 +1,7 @@
+*.exe
+*.o
+*.csv
+*.class
+*.txt
+.idea/*
+
