@@ -12,33 +12,41 @@ public class UnionFindSet<T> {
     }
 
 
-    public void makeSet(T x) {
+    public UnionFindSetNode<T> makeSet(T x) {
         if (x != null) {
             map.put(x, new UnionFindSetNode<>(x));
+            return map.get(x);
         }
+        return null;
     }
 
 
-    public void unionSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
-        linkSet(findSet(x), findSet(y));
+    public UnionFindSetNode<T> unionSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
+       return linkSet(findSet(x), findSet(y));
     }
 
 
-    public void linkSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
+    public UnionFindSetNode<T> linkSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
+        if(x == null || y == null)
+            return  null;
         if (x.getRank() > y.getRank()) {
             y.setParent(x);
-        } else
+            return x;
+        } else {
             x.setParent(y);
-        if (x.getRank() == y.getRank()) {
-            y.setRank(y.getRank() + 1);
+            if (x.getRank() == y.getRank()) {
+                y.setRank(y.getRank() + 1);
+            }
+            return y;
         }
-
     }
 
     public UnionFindSetNode<T> findSet(UnionFindSetNode<T> x) {
         UnionFindSetNode<T> treeClimbingNode = x;
+        if(x == null)
+            return null;
         if (!x.equals(x.getParent())) {
-            treeClimbingNode = findSet(treeClimbingNode);
+            treeClimbingNode = findSet(treeClimbingNode.getParent());
         }
         return treeClimbingNode;
     }
