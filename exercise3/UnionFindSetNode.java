@@ -9,7 +9,7 @@ public class UnionFindSetNode<T> {
     public UnionFindSetNode(T elementToInsert) {
         this.element = elementToInsert;
         this.rank = 0;
-        this.parent = null;
+        this.parent = this;
     }
 
     public T getElement() {

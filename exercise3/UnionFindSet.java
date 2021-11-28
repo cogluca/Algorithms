@@ -46,9 +46,9 @@ public class UnionFindSet<T> {
         if(x == null)
             return null;
         if (!x.equals(x.getParent())) {
-            treeClimbingNode = findSet(treeClimbingNode.getParent());
+            treeClimbingNode.setParent(findSet(treeClimbingNode.getParent()));
         }
-        return treeClimbingNode;
+        return treeClimbingNode.getParent();
     }
 
 }
