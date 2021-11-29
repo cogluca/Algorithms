@@ -1,10 +1,12 @@
 package exercise4;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Graph <T,L> {
 
-    private HashMap<T,HashMap<T,T>> entireGraph;
+    private HashMap<T,ArrayList<HashMap<T,T>>> entireGraph;
     private HashMap<HashMap<T,T>,L> weightsMap;
     private boolean isDirected;
 
@@ -35,8 +37,10 @@ public class Graph <T,L> {
 
     }
 
-    public void addNode(T aNode) {
-        this.entireGraph.putIfAbsent(aNode,new HashMap<>());
+    public void addNode(T aNode) throws Exception {
+        if(aNode == null)
+            throw new Exception("Node doesn't exist");
+        this.entireGraph.putIfAbsent(aNode, new ArrayList<HashMap<T,T>>());
     }
 
 
@@ -46,7 +50,9 @@ public class Graph <T,L> {
         arcIncidentFromOriginToDestination.put(origin,destination);
 
         if(this.isDirected) {
-            this.entireGraph.put(origin, arcIncidentFromOriginToDestination);
+            ArrayList<HashMap<T,T>> incidentArcs = new ArrayList<>();
+            incidentArcs.add(arcIncidentFromOriginToDestination);
+            this.entireGraph.put(origin, incidentArcs);
             this.weightsMap.put(arcIncidentFromOriginToDestination, weight);
         }
         else {
@@ -55,8 +61,8 @@ public class Graph <T,L> {
             arcIncidentFromDestinationToOrigin.put(destination, origin);
 
             //adding both ways of undirected arc
-            this.entireGraph.put(origin, arcIncidentFromOriginToDestination);
-            this.entireGraph.put(destination, arcIncidentFromDestinationToOrigin);
+            //this.entireGraph.put(origin, arcIncidentFromOriginToDestination);
+            //this.entireGraph.put(destination, arcIncidentFromDestinationToOrigin);
 
             //adding both arc directions together with the unique weight
             this.weightsMap.put(arcIncidentFromOriginToDestination, weight);
@@ -76,7 +82,27 @@ public class Graph <T,L> {
 
     }
 
+    public boolean containsArc(HashMap<T,T> anArc) {
 
+        return this.entireGraph.containsValue(anArc);
+
+    }
+
+    public void deleteNode(T aNode) {
+
+        HashMap<T,T> associatedArc;
+
+        this.entireGraph.remove(aNode);
+
+
+
+    }
+
+    public void deleteArc(HashMap<T,T> anArc) {
+
+
+
+    }
 
 
 
