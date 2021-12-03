@@ -21,8 +21,13 @@ public class UnionFindSet<T> {
     }
 
 
-    public UnionFindSetNode<T> unionSet(UnionFindSetNode<T> x, UnionFindSetNode<T> y) {
-       return linkSet(findSet(x), findSet(y));
+    public UnionFindSetNode<T> unionSet(T x, T y) {
+
+        UnionFindSetNode<T> firstNode = map.get(x);
+        UnionFindSetNode<T> secondNode = map.get(y);
+
+
+       return linkSet(findSet(firstNode), findSet(secondNode));
     }
 
 
@@ -39,6 +44,15 @@ public class UnionFindSet<T> {
             }
             return y;
         }
+    }
+
+    public T findSet(T element){
+        UnionFindSetNode<T> r = map.get(element);
+
+        if (r == null)
+            return null;
+
+        return findSet(r).getElement();
     }
 
     public UnionFindSetNode<T> findSet(UnionFindSetNode<T> x) {
