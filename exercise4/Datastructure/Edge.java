@@ -1,4 +1,4 @@
-package exercise4;
+package exercise4.Datastructure;
 
 public class Edge<T,L> {
 

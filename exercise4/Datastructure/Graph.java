@@ -1,4 +1,4 @@
-package exercise4;
+package exercise4.Datastructure;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,6 +17,10 @@ public class Graph <T,L> {
 
     }
 
+    public HashMap<T, Node<T, L>> getNodeMapping() {
+        return nodeMapping;
+    }
+
     public void addNode(T aNode) throws Exception {
         if(aNode == null)
             throw new Exception("Node doesn't exist");
@@ -31,13 +35,13 @@ public class Graph <T,L> {
      * @throws Exception
      */
 
-    public void addArc (T origin, T destination, L label) throws Exception {
+    public void addEdge(T origin, T destination, L label) throws Exception {
         if(!containsNode(origin) || !containsNode(destination))
             throw new Exception("Either origin or destination do not exist");
 
         Node<T,L> nodeSeekingConnection = nodeMapping.get(origin);
         Node<T,L> nodeToConnect = nodeMapping.get(destination);
-        nodeSeekingConnection.getEdgeReference().put(nodeToConnect  , new Edge<T,L>(label, nodeSeekingConnection, nodeToConnect));
+        nodeSeekingConnection.getEdgeReference().put(nodeToConnect  , new Edge<>(label, nodeSeekingConnection, nodeToConnect));
         if(!isDirected())
             nodeToConnect.getEdgeReference().put(nodeSeekingConnection, new Edge<>(label, nodeToConnect, nodeSeekingConnection));
 
@@ -72,7 +76,7 @@ public class Graph <T,L> {
      * @throws Exception if the given nodes are null
      */
 
-    public boolean containsArc(T firstNode, T secondNode) throws Exception {
+    public boolean containsEdge(T firstNode, T secondNode) throws Exception {
 
         if(!containsNode(firstNode)|| !containsNode(secondNode))
             throw new Exception("Either first or second node do not exist");
@@ -106,13 +110,14 @@ public class Graph <T,L> {
      * @param destinationNodeValue second node-retrieving value
      */
 
-    public void deleteArc(T originNodeValue, T destinationNodeValue) {
+    public void deleteEdge(T originNodeValue, T destinationNodeValue) {
 
         nodeMapping.get(originNodeValue).getEdgeReference().remove(destinationNodeValue);
         if(!isDirected())
             nodeMapping.get(destinationNodeValue).getEdgeReference().remove(originNodeValue);
 
     }
+
 
     /**
      * Retrieves the number of nodes in a graph
@@ -133,12 +138,10 @@ public class Graph <T,L> {
         int archSizeCumulator = 0;
 
         for(Node<T,L> iteratedNode: nodeMapping.values()) {
-            archSizeCumulator = archSizeCumulator + iteratedNode.getEdgeReference().size();
+            archSizeCumulator += iteratedNode.getEdgeReference().size();
         }
 
-        if(!isDirected())
-            return archSizeCumulator;
-        return archSizeCumulator/2;
+        return archSizeCumulator;
 
     }
 
@@ -189,8 +192,10 @@ public class Graph <T,L> {
      * @param nodeValueTwo second value of a node given in input
      * @return returns the label of an edge
      */
-    public L getLabel(T nodeValueOne, T nodeValueTwo) {
-        return nodeMapping.get(nodeValueOne).getEdgeReference().get(nodeValueTwo).getLabel();
+    public L getLabelOfEdge(T nodeValueOne, T nodeValueTwo) {
+
+        Node<T,L> secondNode = nodeMapping.get(nodeValueTwo);
+        return nodeMapping.get(nodeValueOne).getEdgeReference().get(secondNode).getLabel();
     }
 
 
