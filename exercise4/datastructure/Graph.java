@@ -41,9 +41,10 @@ public class Graph <T,L> {
 
         Node<T,L> nodeSeekingConnection = nodeMapping.get(origin);
         Node<T,L> nodeToConnect = nodeMapping.get(destination);
-        nodeSeekingConnection.getEdgeReference().put(nodeToConnect  , new Edge<>(label, nodeSeekingConnection, nodeToConnect));
+
+        nodeMapping.get(origin).getEdgeReference().put(nodeToConnect  , new Edge<>(label,nodeSeekingConnection ,nodeToConnect ));
         if(!isDirected())
-            nodeToConnect.getEdgeReference().put(nodeSeekingConnection, new Edge<>(label, nodeToConnect, nodeSeekingConnection));
+            nodeMapping.get(destination).getEdgeReference().put(nodeSeekingConnection, new Edge<>(label, nodeToConnect, nodeSeekingConnection));
 
     }
 
@@ -84,8 +85,7 @@ public class Graph <T,L> {
         Node<T,L> firstNodeObj = nodeMapping.get(firstNode);
         Node<T,L> secondNodeObj = nodeMapping.get(secondNode);
 
-        return this.nodeMapping.get(firstNode).getEdgeReference().containsKey(secondNodeObj) ||
-                this.nodeMapping.get(secondNode).getEdgeReference().containsKey(firstNodeObj);
+        return this.nodeMapping.get(firstNode).getEdgeReference().containsKey(secondNodeObj);
     }
 
     /**

@@ -13,19 +13,22 @@ import java.util.Collections;
 public class Kruskal {
 
 
-    public static Graph<String, Float> tryKruskal() throws Exception {
+    public static Graph<String, Float> tryKruskal(Graph<String,Float> graphToScan) throws Exception {
 
         Graph<String, Float> graph = new Graph<>(false);
         UnionFindSet<Node<String, Float>> unionFindSet = new UnionFindSet<>();
         ArrayList<Edge<String, Float>> listOfEdges = new ArrayList<>();
 
-        listOfEdges.addAll(graph.getEdges());
 
-        for (Node<String, Float> iteratedNode : graph.getNodes()) {
+        listOfEdges.addAll(((ArrayList<Edge<String,Float>>)graphToScan.getEdges()));
+
+        for (Node<String, Float> iteratedNode : graphToScan.getNodes()) {
             unionFindSet.makeSet(iteratedNode);
         }
 
         Collections.sort(listOfEdges, new Compare());
+
+
 
         for (Edge<String, Float> edge : listOfEdges) {
             // System.out.println(" " + arc.getNodeFrom().getValue() + " - " +
@@ -39,7 +42,7 @@ public class Kruskal {
                 }
                 unionFindSet.unionSet(edge.getFirstNode(), edge.getSecondNode());
                 if (!graph.containsEdge(edge.getFirstNode().getValue(), edge.getSecondNode().getValue())) {
-                    graph.addEdge(edge.getFirstNode().getValue(), edge.getFirstNode().getValue(), edge.getLabel());
+                    graph.addEdge(edge.getFirstNode().getValue(), edge.getSecondNode().getValue(), edge.getLabel());
                 }
             }
 

@@ -12,22 +12,24 @@ public class UnionFindSet<T> {
     }
 
 
-    public UnionFindSetNode<T> makeSet(T x) {
+    public UnionFindSetNode<T> makeSet(T x) throws Exception {
         if (x != null) {
             map.put(x, new UnionFindSetNode<>(x));
             return map.get(x);
         }
-        return null;
+        throw new Exception("Didn't make the set correctly");
     }
 
 
-    public UnionFindSetNode<T> unionSet(T x, T y) {
+    public UnionFindSetNode<T> unionSet(T x, T y) throws Exception {
 
         UnionFindSetNode<T> firstNode = map.get(x);
         UnionFindSetNode<T> secondNode = map.get(y);
 
+        if(firstNode == null || secondNode == null)
+            throw new Exception("Reference nodes are non existent");
 
-       return linkSet(findSet(firstNode), findSet(secondNode));
+        return linkSet(findSet(firstNode), findSet(secondNode));
     }
 
 
@@ -47,12 +49,12 @@ public class UnionFindSet<T> {
     }
 
     public T findSet(T element){
-        UnionFindSetNode<T> r = map.get(element);
+        UnionFindSetNode<T> aNode = map.get(element);
 
-        if (r == null)
+        if (aNode == null)
             return null;
 
-        return findSet(r).getElement();
+        return findSet(aNode).getElement();
     }
 
     public UnionFindSetNode<T> findSet(UnionFindSetNode<T> x) {

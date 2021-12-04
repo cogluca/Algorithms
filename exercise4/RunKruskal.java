@@ -20,7 +20,8 @@ public class RunKruskal {
         filename = scanner.nextLine();
 
         try {
-            returnedForest = DataUtils.loadGraph(DataUtils.loadData(filename));
+            toTestGraph = DataUtils.loadGraph(DataUtils.loadData(filename));
+            returnedForest = Kruskal.tryKruskal(toTestGraph);
             distance = DataUtils.getTotalForestDistance(returnedForest);
 
             System.out.println("Total distance in this minimal forest is: " + distance/1000);

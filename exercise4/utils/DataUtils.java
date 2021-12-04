@@ -51,7 +51,7 @@ public class DataUtils {
             }
 
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            ioe.getMessage();
         }
 
         return loadedData;
@@ -88,10 +88,10 @@ public class DataUtils {
         Collection<Edge<String, Float>> edges = kruskalResult.getEdges();
 
         for (Edge<String, Float> edge : edges) {
-            totalDistance += edge.getLabel().floatValue();
+            totalDistance += edge.getLabel();
         }
 
-        return totalDistance;
+        return totalDistance/2;
     }
 
 
