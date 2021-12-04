@@ -142,7 +142,7 @@ public class GraphTest {
         toTestGraph.addEdge(element1, element2, label1);
         toTestGraph.addEdge(element2,element3,label2);
 
-        assertEquals(toTestGraph.graphEdgeSize(),4);
+        assertEquals(toTestGraph.graphEdgeSize(),2);
 
     }
 
