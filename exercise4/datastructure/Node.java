@@ -16,16 +16,8 @@ public class Node<T,L> {
         return value;
     }
 
-    public void setValue(T value) {
-        this.value = value;
-    }
-
     public HashMap<Node<T, L>, Edge<T, L>> getEdgeReference() {
         return edgeReference;
-    }
-
-    public void setEdgeReference(HashMap<Node<T, L>, Edge<T, L>> edgeReference) {
-        this.edgeReference = edgeReference;
     }
 
 
