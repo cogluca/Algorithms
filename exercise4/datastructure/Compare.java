@@ -1,4 +1,4 @@
-package exercise4.Datastructure;
+package exercise4.datastructure;
 
 import java.util.Comparator;
 

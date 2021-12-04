@@ -1,10 +1,7 @@
-package exercise4.Datastructure;
+package exercise4.datastructure;
 
 import org.junit.Before;
 import org.junit.Test;
-import sun.reflect.ReflectionFactory;
-
-import java.util.Collection;
 
 import static org.junit.Assert.*;
 
@@ -138,14 +135,14 @@ public class GraphTest {
     @Test
     public void edgeSize() throws Exception {
 
-        toTestGraph = new Graph<>(true);
+        toTestGraph = new Graph<>(false);
         toTestGraph.addNode(element1);
         toTestGraph.addNode(element2);
         toTestGraph.addNode(element3);
         toTestGraph.addEdge(element1, element2, label1);
         toTestGraph.addEdge(element2,element3,label2);
 
-        assertEquals(toTestGraph.graphEdgeSize(),2);
+        assertEquals(toTestGraph.graphEdgeSize(),4);
 
     }
 

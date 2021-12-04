@@ -1,4 +1,4 @@
-package exercise4.Datastructure;
+package exercise4.datastructure;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -140,6 +140,8 @@ public class Graph <T,L> {
         for(Node<T,L> iteratedNode: nodeMapping.values()) {
             archSizeCumulator += iteratedNode.getEdgeReference().size();
         }
+        if(!isDirected())
+            return archSizeCumulator/2;
 
         return archSizeCumulator;
 

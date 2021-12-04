@@ -68,7 +68,7 @@ public class UnionFindSetTest {
         UnionFindSetNode<Integer> aNode = unionFindSetToTest.makeSet(element3);
         UnionFindSetNode<Integer> anotherNode = unionFindSetToTest.makeSet(element4);
 
-        unionFindSetToTest.unionSet(aNode,anotherNode);
+        unionFindSetToTest.unionSet(element3,element4);
 
         Assert.assertEquals(unionFindSetToTest.findSet(aNode), unionFindSetToTest.findSet(anotherNode));
 
@@ -88,8 +88,8 @@ public class UnionFindSetTest {
         UnionFindSetNode<Integer> nodeThree = unionFindSetToTest.makeSet(element3);
         UnionFindSetNode<Integer> nodeFour = unionFindSetToTest.makeSet(element4);
 
-        unionFindSetToTest.unionSet(nodeOne,nodeTwo);
-        unionFindSetToTest.unionSet(nodeThree,nodeFour);
+        unionFindSetToTest.unionSet(element1,element2);
+        unionFindSetToTest.unionSet(element3,element4);
 
         Assert.assertNotEquals(unionFindSetToTest.findSet(nodeTwo), unionFindSetToTest.findSet(nodeFour));
 

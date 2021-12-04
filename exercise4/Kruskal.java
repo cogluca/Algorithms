@@ -1,20 +1,19 @@
 package exercise4;
 
 import exercise3.UnionFindSet;
-import exercise4.Datastructure.Compare;
-import exercise4.Datastructure.Edge;
-import exercise4.Datastructure.Graph;
-import exercise4.Datastructure.Node;
+import exercise4.datastructure.Compare;
+import exercise4.datastructure.Edge;
+import exercise4.datastructure.Graph;
+import exercise4.datastructure.Node;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 
 public class Kruskal {
 
 
-    public void tryKruskal() throws Exception {
+    public static Graph<String, Float> tryKruskal() throws Exception {
 
         Graph<String, Float> graph = new Graph<>(false);
         UnionFindSet<Node<String, Float>> unionFindSet = new UnionFindSet<>();
@@ -46,7 +45,12 @@ public class Kruskal {
 
 
         }
-
+        return graph;
 
     }
+
+
+
+
+
 }
