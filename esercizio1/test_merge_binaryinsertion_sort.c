@@ -26,7 +26,7 @@ void test_unsorted_int_array() {
     int* correct_array[] = {&arr[0],&arr[1],&arr[2],&arr[3],&arr[4],&arr[5],&arr[6]};
 
 
-    merge_binary_insertion_sort((void**) array, 0, 6,3,comp_int);
+    merge_binary_insertion_sort_entry((void**) array, 7,3,comp_int);
 
     TEST_ASSERT_EQUAL_PTR_ARRAY((void**)correct_array,(void**) array,7);
 }

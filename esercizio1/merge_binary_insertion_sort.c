@@ -104,8 +104,8 @@ void merge_binary_insertion_sort(void **array, int left_bound, int right_bound, 
 }
 
 
-/*
-void merge_binaryInsertion_sort(void **array,int array_size,int k,int (*compare)(void*,void*)){
+
+void merge_binary_insertion_sort_entry(void **array,int array_size,int k,int (*compare)(void*,void*)){
     if (array == NULL){
         fprintf(stderr,"merge_binaryInsertion_sort: the array is a null pointer");
         exit(EXIT_FAILURE);
@@ -127,4 +127,3 @@ void merge_binaryInsertion_sort(void **array,int array_size,int k,int (*compare)
 
     merge_binary_insertion_sort(array,0,array_size-1,k,compare);
 }
-*/
