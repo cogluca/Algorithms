@@ -7,6 +7,7 @@
 #define BUFFER_SIZE  1024
 #define STRING_SIZE  16
 #define FILEDATASIZE  20000000
+#define FILENAMESIZE 300
 
 typedef struct _Record {
 
@@ -18,51 +19,68 @@ typedef struct _Record {
 }Record;
 
 
+
+/**
+ * Opens file through path given in input, incapsulates the data in a Record struct and feeds it into an array
+ * @param record array
+ * @param filename file path
+ * @return returns size of array - 1
+ */
 int load_array (Record** record,char* filename){
     char read_line[BUFFER_SIZE];
 
-    int new_id;
-    char new_field1[STRING_SIZE];
-    int new_field2;
-    float new_field3;
-
     Record* new_record;
-    int pos_loaded = 0;
+
+    int data_position = 0;
+
+    int new_id;
+    char new_field_one[STRING_SIZE];
+    int new_field_two;
+    float new_field_three;
+
 
     if (filename == NULL){
-        fprintf(stderr,"File name is null");
+        fprintf(stderr,"Filename is null - during array loading");
     }
 
     FILE * fp = fopen(filename,"r");
     if (fp == NULL){
-        fprintf(stderr,"Unable to open file %s",filename);
+        fprintf(stderr,"Unable to open file %s during array loading",filename);
     }
 
     while (fgets(read_line,BUFFER_SIZE,fp) != NULL){
+
+
         new_id = atoi(strtok(read_line,","));
-        strcpy(new_field1,strtok(NULL,","));
-        new_field2 = atoi(strtok(NULL,","));
-        new_field3 = atof(strtok(NULL,","));
+        strcpy(new_field_one, strtok(NULL, ","));
+        new_field_two = atoi(strtok(NULL, ","));
+        new_field_three = atof(strtok(NULL, ","));
 
         new_record = (Record*) malloc(sizeof(Record));
 
         if (new_record == NULL){
-            fprintf(stderr,"Unable to allocate memory for next record");
+            fprintf(stderr,"Unable to allocate memory for next record during array loading");
         }
 
         new_record->id = new_id;
-        new_record->first_field = (char*)malloc(sizeof(char) * (strlen(new_field1) + 1));
-        strcpy(new_record->first_field,new_field1);
-        new_record->second_field = new_field2;
-        new_record->third_field = new_field3;
+        new_record->first_field = (char*)malloc(sizeof(char) * (strlen(new_field_one) + 1));
+        strcpy(new_record->first_field, new_field_one);
+        new_record->second_field = new_field_two;
+        new_record->third_field = new_field_three;
 
-        record[pos_loaded++] = new_record;
+        record[data_position++] = new_record;
 
     }
 
-    return pos_loaded;
+    return data_position;
 }
 
+/**
+ * Wrapper method that allocates necessary memory to array and feeds array into load method for data filling
+ * @param array pristine array, still to allocate memory
+ * @param filename file path necessary to feed data onto array
+ * @return returns size of array - 1
+ */
 int create_array(Record*** array, char* filename){
     *array = (Record**) malloc(sizeof(Record*) * FILEDATASIZE);
 
@@ -74,16 +92,16 @@ int create_array(Record*** array, char* filename){
 
 }
 
-
+// Comparator function for strings, makes use of string library methods
 int precedes_record_string_first_field(void* one_record, void* another_record) {
 
     if(one_record == NULL) {
-        printf("first record in comparison is null");
+        printf("first record  has null value during comparison");
         exit(0);
     }
 
     if(another_record == NULL) {
-        printf("second record in comparison is null");
+        printf("second record  has null value during comparison");
         exit(0);
     }
 
@@ -92,20 +110,23 @@ int precedes_record_string_first_field(void* one_record, void* another_record) {
 
     if((strcmp(to_compare_record1->first_field, to_compare_record2->first_field)<0))
         return (1);
+    if((strcmp(to_compare_record1->first_field, to_compare_record2->first_field)>0))
+        return(-1);
     return (0);
 
 }
 
+//Comparator method for integers
 
 int precedes_record_int_second_field(void* one_record, void* another_record) {
 
     if(one_record == NULL) {
-        printf("first record in comparison is null");
+        printf("first record  has null value during comparison");
         exit(0);
     }
 
     if(another_record == NULL) {
-        printf("second record in comparison is null");
+        printf("second record has  null value during comparison");
         exit(0);
     }
 
@@ -123,7 +144,7 @@ int precedes_record_int_second_field(void* one_record, void* another_record) {
 
 
 
-
+//Comparator function for float types
 
 
 int precedes_record_float_third_field(void* one_record, void* another_record) {
@@ -143,6 +164,8 @@ int precedes_record_float_third_field(void* one_record, void* another_record) {
 
     if(to_compare_record1->third_field < to_compare_record2->third_field)
         return (1);
+    if(to_compare_record1->third_field > to_compare_record2->third_field)
+        return (-1);
     return (0);
 
 }
@@ -168,6 +191,7 @@ void free_array_first_field(Record** array, int size){
     }
 }
 
+//Frees array memory
 
 void free_array(Record** array, int size){
     int i;
@@ -180,7 +204,12 @@ void free_array(Record** array, int size){
 
 
 
-
+/**
+ * Sorting wrapper, executes 3 sortings one for each type of data (string, int, float) and registers execution time extremely dependent on k value
+ * @param array actual array to be sorted
+ * @param size size of array, necessary for boundary calculations
+ * @param k internal sorting mechanism parameter, decides size of subarray onto which apply binary insertion sort
+ */
 
 void sort_array(Record** array, int size, int k){
     long msec0 = 0;
@@ -216,30 +245,30 @@ void sort_array(Record** array, int size, int k){
 
 
 
-
+/**
+ * Main method
+ * @return
+ */
 
 int main(){
     Record **array;
     int array_size;
-    char filename[STRING_SIZE];
+    char filename[FILENAMESIZE];
     int k;
 
-    printf("Insert the name of the file containing all records to sort: \n");
+    printf("Insert datasheet name: \n");
     scanf("%s", filename);
 
-    printf("Insert the value of k: \n");
+    printf("Insert value of k: \n");
     scanf("%d", &k);
 
     array_size = create_array(&array,filename);
 
     sort_array(array,array_size,k);
 
-    //print_array(array,array_size);
+    free_array(array,array_size);
 
-    //free(array);
-    //free_array(array,array_size);
-
-    exit(0);
+    return 0;
 }
 
 //read file
