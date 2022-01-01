@@ -8,7 +8,15 @@ void tearDown(void) {
 }
 
 int comp_int(void *a, void *b){
-    return *(int*)a < *(int*)b;
+
+    if(*(int*)a < *(int*)b)
+        return (1);
+    else if(*(int*)a > *(int*)b)
+        return (-1);
+    else
+        return (0);
+
+    //return *(int*)a < *(int*)b;
 }
 
 void test_sorted_int_array() {
