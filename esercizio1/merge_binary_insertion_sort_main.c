@@ -212,16 +212,17 @@ void free_array(Record** array, int size){
  */
 
 void sort_array(Record** array, int size, int k){
+
     long msec0 = 0;
     long msec1 = 0;
     long msec2 = 0;
-
 
 
     clock_t first_clock_start = clock();
     merge_binary_insertion_sort_entry((void**)array,size,k, &precedes_record_string_first_field);
     msec0 = (clock()-first_clock_start) *1000 / CLOCKS_PER_SEC;
     printf("Sorting of first_field completed after %ld ms\n",msec0);
+
 
     //free_array_first_field(array,size);
 
@@ -231,7 +232,6 @@ void sort_array(Record** array, int size, int k){
     printf("Sorting of second_field completed after %ld ms\n",msec1);
 
     //free_array_second_field(array,size);
-
 
     clock_t third_clock_start = clock();
     merge_binary_insertion_sort_entry((void**)array,size,k, &precedes_record_float_third_field);
@@ -254,19 +254,37 @@ int main(){
     Record **array;
     int array_size;
     char filename[FILENAMESIZE];
-    int k;
+    int k = 0;
+
 
     printf("Insert datasheet name: \n");
     scanf("%s", filename);
 
-    printf("Insert value of k: \n");
-    scanf("%d", &k);
+    //printf("Insert value of k: \n");
+    //scanf("%d", &k);
 
     array_size = create_array(&array,filename);
 
-    sort_array(array,array_size,k);
+    Record** arr = (Record**) malloc(sizeof(array));
 
-    free_array(array,array_size);
+
+    while(k <= 5000) {
+
+        printf("For k = %d\n" , k);
+
+        sort_array(array,array_size,k);
+
+
+        printf("End of sorting\n");
+
+        //free_array(array,array_size);
+
+        printf("End of iteration\n");
+
+        k+=500;
+    }
+
+
 
     return 0;
 }
