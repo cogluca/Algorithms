@@ -12,6 +12,7 @@ int min_val (int one_op, int second_op) {
 }
 
 int _edit_distance_strings(char *string_one, char *string_two) {
+
     int dno_op;
     int dcanc;
     int dins;
