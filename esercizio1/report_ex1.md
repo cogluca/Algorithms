@@ -8,9 +8,8 @@ Primo range : 0 <= k <= 300 e incrementi di 20 su k
 
 Ritrovamenti
 
-![./staticResources/graph500]
+![graphRange 0-300](./staticResources/graph300.png)
 
-![[Pasted image 20220102231638.png]]
 
 Su un range ristretto già si può vedere un lieve andamento crescente, non esattamente monotono crescente da datapoint a datapoint ma sull'intero range di dati i tempi son decisamente crescenti con una rampa sostanziosa tra k uguale a 140 e k uguale a 160.
 
@@ -18,17 +17,15 @@ Si intravede inoltre un lieve comportamento a gradino
 
 Osserviamo ora l'andamento nel secondo range con k compreso fra 0 e 1500, con incrementi di k di 100
 
-![[Pasted image 20220102232008.png]]
 
-![[Pasted image 20220102232036.png]]
+![graphRange 0-1500](./staticResources/graph1500.png)
 
 Con questo range è possibile notare un chiaro comportamento a gradino in cui le salite si fan sempre più ripide e i plateau sempre più lunghi
 
 Terzo range : 0 <= k <= 5000 con incrementi di k di 500
 
-![[Pasted image 20220103002039.png]]
 
-![[Pasted image 20220103002054.png]]
+![graphRange 0-5000](./staticResources/graph5000.png)
 
 Si conferma lo stesso pattern a gradino che si avvicina sempre di più ad una funzione a gradino ideale più si allarga la vista per accomodare un range di k più espanso
 
