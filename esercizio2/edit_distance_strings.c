@@ -43,7 +43,7 @@ int edit_distance_strings(char* one_string, char* another_string) {
         exit(EXIT_FAILURE);
     }
 
-    _edit_distance_strings(one_string, another_string);
+     return _edit_distance_strings(one_string, another_string);
 
 }
 

@@ -19,7 +19,7 @@ void test_same_strings() {
 
     int distance = 0;
 
-    TEST_ASSERT_EQUAL_INT(distance, _edit_distance_strings(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
@@ -31,7 +31,7 @@ void test_one_absent() {
 
     int distance = 6;
 
-    TEST_ASSERT_EQUAL_INT(distance, _edit_distance_strings(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
@@ -43,7 +43,7 @@ void test_second_absent() {
 
     int distance = 6;
 
-    TEST_ASSERT_EQUAL_INT(distance, _edit_distance_strings(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
@@ -55,11 +55,9 @@ void test_different_strings() {
 
     int distance = 1;
 
-    TEST_ASSERT_EQUAL_INT(distance, _edit_distance_strings(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
-
-
 
 
 int main() {
