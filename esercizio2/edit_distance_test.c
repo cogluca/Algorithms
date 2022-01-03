@@ -1,6 +1,8 @@
 
 
-
+#include <stdio.h>
+#include <stdlib.h>
+#include "string.h"
 #include "edit_distance_strings.h"
 #include "unity.h"
 
@@ -63,8 +65,10 @@ void test_different_strings() {
 int main() {
     UNITY_BEGIN();
 
-    RUN_TEST(test_sorted_int_array);
-    RUN_TEST(test_unsorted_int_array);
+    RUN_TEST(test_different_strings);
+    RUN_TEST(test_one_absent);
+    RUN_TEST(test_same_strings);
+    RUN_TEST(test_second_absent);
 
     return UNITY_END();
 }
