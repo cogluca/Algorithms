@@ -26,7 +26,7 @@ void test_same_strings() {
 
 void test_one_absent() {
 
-    char* one_string = NULL;
+    char* one_string = "";
     char* another_string = "Franco";
 
     int distance = 6;
@@ -39,7 +39,7 @@ void test_one_absent() {
 void test_second_absent() {
 
     char* one_string = "Franco";
-    char* another_string = NULL;
+    char* another_string = "";
 
     int distance = 6;
 

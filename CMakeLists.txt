@@ -5,4 +5,7 @@ set(CMAKE_C_STANDARD 99)
 
 add_executable(esercizio2Base esercizio2/edit_distance_test.c
         esercizio2/edit_distance_strings.h
-        esercizio2/edit_distance_strings.c)
+        esercizio2/edit_distance_strings.c
+        esercizio2/unity.c
+        esercizio2/unity.h
+        esercizio2/unity_internals.h)
