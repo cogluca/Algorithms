@@ -1,9 +1,7 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "string.h"
-#include "edit_distance_strings.h"
+#include "edit_distance_strings_dynamic.h"
 #include "unity.h"
 
 void setUp(void) {}
