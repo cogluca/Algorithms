@@ -3,11 +3,27 @@
 #include "stdio.h"
 #include "string.h"
 
-
+/**
+ * Compares two integer values to find the smallest one
+ * @param one_op first elem to compare
+ * @param second_op second element to compare
+ * @return smallest integer between parameters
+ */
 int min_val (int one_op, int second_op) {
     return (one_op < second_op) ? one_op : second_op;
 }
 
+
+
+/**
+ *
+ * @param string_one
+ * @param string_two
+ * @param length_one
+ * @param length_two
+ * @param mapping_matrix
+ * @return
+ */
 int _edit_distance_strings_dyn(char* string_one, char* string_two, int length_one, int length_two, int** mapping_matrix) {
 
     int dno_op;
@@ -45,12 +61,19 @@ int _edit_distance_strings_dyn(char* string_one, char* string_two, int length_on
 
 }
 
-
+/**
+ * Wrapper for internal call on method logic, creates the mapping matrix in which to store substring distances and checks for
+ * null parameters
+ * @param one_string first string to compare
+ * @param another_string second string to compare
+ * @return returns minimum edit distance to obtain string represented by one_string by modifying another_string
+ */
 int edit_distance_strings_dyn(char* one_string, char* another_string) {
 
     int len_one_string;
     int len_another_string;
     int** mapping_matrix;
+    int resulting_distance;
 
     if(one_string == NULL || another_string == NULL) {
         printf("One of the two strings is null");
@@ -59,6 +82,7 @@ int edit_distance_strings_dyn(char* one_string, char* another_string) {
 
     len_one_string = (int) strlen(one_string);
     len_another_string = (int) strlen(another_string);
+
     mapping_matrix = (int**) malloc(sizeof(int*) * (len_one_string + 1));
 
     for(int i = 0; i <= len_one_string; i++) {
@@ -68,8 +92,11 @@ int edit_distance_strings_dyn(char* one_string, char* another_string) {
         }
     }
 
-    return _edit_distance_strings_dyn(one_string, another_string, len_one_string, len_another_string, mapping_matrix);
+    resulting_distance = _edit_distance_strings_dyn(one_string, another_string, len_one_string, len_another_string, mapping_matrix);
 
+    free(mapping_matrix);
+
+    return resulting_distance;
 }
 
 
