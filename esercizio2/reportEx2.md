@@ -26,7 +26,7 @@ Con previa esecuzione dell'algoritmo e collezione di risultati, utilizzando una 
 
 Snippet dello stato precedente alla modifica
 
-[static_resources/Algo%20with%200%20distance.png]
+![vanilla_algorithm](static_resources/Algo%20with%200%20distance.png)
 
 Sotto uno snippet di codice ritraente le modifiche
 
@@ -72,4 +72,4 @@ for(int i = 0; i < distances_length; i++) {
 
 Sotto un esempio di esecuzione della modifica
 
-[output_con_modifica](static_resources/dissero.png)
+![output_con_modifica](static_resources/dissero.png)
