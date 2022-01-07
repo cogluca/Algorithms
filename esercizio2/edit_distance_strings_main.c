@@ -62,26 +62,57 @@ void print_smallest_distance_words(char** word, char** dictionary, int dictionar
     int smallest_distance = INT8_MAX;
     int current_distance;
     char** curated_words;
+    int* distances;
+    int distances_length;
     int result_size = 0;
     int i;
+    char* pick;
+
+    distances_length = 0;
+
 
     curated_words = (char**) malloc(sizeof(char*) * dictionary_size);
+    distances = (int*) malloc(sizeof (int) * 30);
+    pick = (char*) malloc(sizeof (char)* 30);
 
     for (i = 0; i < dictionary_size; i++) {
-        current_distance = edit_distance_strings(word, dictionary[i]);
+        current_distance = edit_distance_strings(*word, dictionary[i]);
+
+        if(current_distance == 0) {
+            smallest_distance = current_distance;
+            curated_words[result_size++] = dictionary[i];
+            distances[distances_length++] = current_distance;
+            break;
+        }
 
         if (current_distance < smallest_distance) {
             result_size = 0;
+            distances_length = 0;
             smallest_distance = current_distance;
         }
 
-        if (current_distance == smallest_distance)
+        if (current_distance == smallest_distance) {
             curated_words[result_size++] = dictionary[i];
+            distances[distances_length++] = current_distance;
+        }
 
-        if (smallest_distance == 0) break;
     }
 
-    printf("%s \n", word);
+    printf("%s \n", *word);
+
+    for(int i = 0; i < distances_length; i++) {
+        if(distances[i] == 0) {
+            pick = curated_words[i];
+            printf("Direct correspondence is %s \n", pick);
+        }
+    }
+
+    /**
+     * /Users/frankacarkan/Desktop/Algo/Lab/ex2data/Basis/correctme.txt
+Insert dictionary:
+/Users/frankacarkan/Desktop/Algo/Lab/ex2data/Basis/dictionary.txt
+     */
+
 
     printf("Curated picks from dictionary are: \n");
 
@@ -122,7 +153,7 @@ int main() {
     dictionary_size = detect_words_from_file(dictionary_filename, dictionary);
 
     for(int i = 0; i < correctme_size; i++) {
-        print_smallest_distance_words(correctme[i], dictionary, dictionary_size);
+        print_smallest_distance_words(&correctme[i], dictionary, dictionary_size);
     }
 
     free(dictionary);
