@@ -9,7 +9,7 @@ void setUp(void) {}
 void tearDown(void) {
 }
 
-
+//tests for strings without differences
 void test_same_strings() {
 
     char* one_string = "pioppo";
@@ -17,11 +17,11 @@ void test_same_strings() {
 
     int distance = 0;
 
-    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings_dyn(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
-
+//checks difference between an empty string and another one
 void test_one_absent() {
 
     char* one_string = "";
@@ -29,11 +29,11 @@ void test_one_absent() {
 
     int distance = 6;
 
-    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings_dyn(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
-
+//checks for second absent string
 void test_second_absent() {
 
     char* one_string = "Franco";
@@ -41,11 +41,11 @@ void test_second_absent() {
 
     int distance = 6;
 
-    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings_dyn(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
-
+//checks for different strings
 void test_different_strings() {
 
     char* one_string = "casa";
@@ -53,11 +53,11 @@ void test_different_strings() {
 
     int distance = 1;
 
-    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings_dyn(one_string, another_string));
+    TEST_ASSERT_EQUAL_INT(distance, edit_distance_strings(one_string, another_string));
 
 }
 
-
+//executes tests
 int main() {
     UNITY_BEGIN();
 

@@ -16,12 +16,12 @@ int min_val (int one_op, int second_op) {
 
 
 /**
- *
- * @param string_one
- * @param string_two
- * @param length_one
- * @param length_two
- * @param mapping_matrix
+ * Dynamic edit distance algorithm, makes use of a matrix to reduce calculation time and work load, such technique is known as memoization
+ * @param string_one first array containing the string under analysis
+ * @param string_two second array containing the string under analysis
+ * @param length_one first string size, used inversely: reduces for each starting character analyzed
+ * @param length_two second string size, used inversely: reduces for each starting character analyzed
+ * @param mapping_matrix Matrix containing substring edit distances (by considering 2 operations: delete and insertion), part of the memoization technique for storing partial results
  * @return
  */
 int _edit_distance_strings_dyn(char* string_one, char* string_two, int length_one, int length_two, int** mapping_matrix) {
@@ -68,7 +68,7 @@ int _edit_distance_strings_dyn(char* string_one, char* string_two, int length_on
  * @param another_string second string to compare
  * @return returns minimum edit distance to obtain string represented by one_string by modifying another_string
  */
-int edit_distance_strings_dyn(char* one_string, char* another_string) {
+int edit_distance_strings(char* one_string, char* another_string) {
 
     int len_one_string;
     int len_another_string;
