@@ -50,11 +50,9 @@
         else
             dno_op = INT8_MAX;
 
-        dcanc = 1 +
-                internal_edit_distance_strings_dyn(string_one, string_two + 1, length_one, length_two - 1, mapping_matrix);
+        dcanc = 1 + internal_edit_distance_strings_dyn(string_one, string_two + 1, length_one, length_two - 1, mapping_matrix);
 
-        dins = 1 +
-                internal_edit_distance_strings_dyn(string_one + 1, string_two, length_one - 1, length_two, mapping_matrix);
+        dins = 1 + internal_edit_distance_strings_dyn(string_one + 1, string_two, length_one - 1, length_two, mapping_matrix);
 
         distance_computation = min_val(dno_op, min_val(dcanc, dins));
 
@@ -90,13 +88,13 @@
 
         for(int i = 0; i <= len_one_string; i++) {
             mapping_matrix[i] = (int*) malloc(sizeof(int) * (len_another_string +1));
+
             for(int j = 0; j <= len_another_string; j++) {
                 mapping_matrix[i][j] = -1;
             }
         }
 
-        resulting_distance = internal_edit_distance_strings_dyn(one_string, another_string, len_one_string,
-                                                                len_another_string, mapping_matrix);
+        resulting_distance = internal_edit_distance_strings_dyn(one_string, another_string, len_one_string, len_another_string, mapping_matrix);
 
         free(mapping_matrix);
 

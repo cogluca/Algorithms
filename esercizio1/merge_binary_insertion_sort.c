@@ -51,20 +51,22 @@
         if (right_bound - left_bound <= 1)
             return;
 
-        int i, loc, j;
+        int i;
+        int location;
+        int j;
         void *selected_elem;
 
         for (i = left_bound + 1; i < right_bound; ++i) {
-            loc = binary_search(array, left_bound, i-1, i, compare);
+            location = binary_search(array, left_bound, i - 1, i, compare);
             selected_elem = array[i];
             j = i - 1;
 
 
-            while (j >= loc) {
+            while (j >= location) {
                 array[j + 1] = array[j];
                 j--;
             }
-            array[loc] = selected_elem;
+            array[location] = selected_elem;
         }
     }
 
@@ -85,6 +87,7 @@
 
         first_split_index = left_bound;
         second_split_index = approx_middle + 1;
+
         buffer_index = 0;
 
         while (first_split_index <= approx_middle && second_split_index <= right_bound) {
@@ -136,9 +139,9 @@
         if ((right_bound - (m + 1)) <= k) {
             binary_insertion_sort(array, m + 1, right_bound+1, compare);
         }
-        else
+        else {
             merge_binary_insertion_sort(array, m + 1, right_bound, k, compare);
-
+        }
         merge(array, left_bound, m, right_bound, compare);
     }
 

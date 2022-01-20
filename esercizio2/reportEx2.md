@@ -21,7 +21,7 @@ Qui sotto è possibile ritrovare i risultati completi
 
 ## Sperimentazione sul numero di corrispondenze
 
-Con previa esecuzione dell'algoritmo e collezione di risultati, utilizzando una struttura dati ausiliare in cui vengono salvate le distanze minori è possibile ottimizzare l'algoritmo per selezionare parole con corrispondenza diretta alla parola già corretta, raffinando cosi l'analisi sintattica tramite edit distance
+Con previa esecuzione dell'algoritmo e collezione di risultati, utilizzando una struttura dati ausiliare in cui vengono salvate le distanze minori è possibile ottimizzare l'algoritmo per selezionare parole con corrispondenza diretta alla parola già corretta di per sè, raffinando cosi l'analisi sintattica tramite edit distance
 
 
 Snippet dello stato precedente alla modifica

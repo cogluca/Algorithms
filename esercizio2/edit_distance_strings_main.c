@@ -109,12 +109,6 @@
             }
         }
 
-        /**
-         * /Users/frankacarkan/Desktop/Algo/Lab/ex2data/Basis/correctme.txt
-    Insert dictionary:
-    /Users/frankacarkan/Desktop/Algo/Lab/ex2data/Basis/dictionary.txt
-         */
-
 
         printf("Curated picks from dictionary are: \n");
 
@@ -158,8 +152,8 @@
             print_smallest_distance_words(&correctme[i], dictionary, dictionary_size);
         }
 
-        free(dictionary);
         free(correctme);
+        free(dictionary);
 
         return 0;
     }
