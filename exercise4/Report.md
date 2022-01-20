@@ -1,4 +1,4 @@
-### Introduzione
+## Introduzione
 
 Gli step dell'esercizio si articolano in 3 punti più un obbiettivo finale:
 
@@ -53,7 +53,7 @@ Questo esperimento è stato interrotto con alcune operazioni che richiedevano O(
 
 L'inserimento di ArrayList all'interno dell'Hashmap map, richiedeva un ciclo per recuperare un nodo adiacente con complessità temporale di almeno O(n) e per quanto riguarda la mappatura di archi-etichette senza una classe Edge, richiedeva a sua volta calcoli complessi anche per la più semplice delle operazioni.
 
-![Untitled](./staticresources/Fail.png)
+![Untitled](./staticresources/fail.png)
 
 (fig.1) Una riproduzione del tentativo
 
@@ -79,7 +79,7 @@ Kruskal applicato a grafi sparsi, e per grafi sparsi intendiamo grafi in cui il 
 
 Mi è stato fornito dai professori un dataset già preparato, senza valori assenti e non ordinato (fattore di cui si occupa direttamente l'algoritmo con un ordinamento non decrescente degli archi).
 
-Il dataset riguarda la distanza fra alcune località fra cui alcune vi è una connessione bidirezionale che a livello implementativo per noi si traduce nella necessità di avere un grafo non direzionato.
+Il dataset riguarda la distanza fra alcune località fra cui alcune vi è una connessione bidirezionale.
 
 Fonte dataset:
 

@@ -20,7 +20,7 @@
             ArrayList<Edge<String, Float>> listOfEdges = new ArrayList<>();
 
 
-            listOfEdges.addAll(((ArrayList<Edge<String,Float>>)graphToScan.getEdges()));
+            listOfEdges.addAll((graphToScan.getEdges()));
 
             for (Node<String, Float> iteratedNode : graphToScan.getNodes()) {
                 unionFindSet.makeSet(iteratedNode);
