@@ -33,7 +33,7 @@
         int *array[] = {&arr[0], &arr[4], &arr[1], &arr[6], &arr[2], &arr[5], &arr[3]};
         int *array2[] = {&arr[0], &arr[4], &arr[1], &arr[6], &arr[2], &arr[5], &arr[3]};
         int *correct_array[] = {&arr[0], &arr[1], &arr[2], &arr[3], &arr[4], &arr[5], &arr[6]};
-
+        merge_binary_insertion_sort_entry((void **) array, 7, 3, comp_int);
 
         TEST_ASSERT_EQUAL_PTR_ARRAY((void **) correct_array, (void **) array, 7);
 
