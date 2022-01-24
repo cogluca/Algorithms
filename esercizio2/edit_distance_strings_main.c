@@ -53,13 +53,13 @@
 
 
     /**
-     * Applies the edit distance algorithm by taking the array of words and the dictionary in input and comparing the current word to the possible alternatives in the dictionary, finally
+     * Applies the edit distance algorithm by taking the array of words and the dictionary in input and comparing the current to_analyze_word to the possible alternatives in the dictionary, finally
      * prints the results, such thing is done instead of returning a corrected file because edit_distance as a mechanic doesn't provide a unique certain outcome but a range of possibilities
-     * @param word current word to take onto examination
+     * @param to_analyze_word current to_analyze_word to take onto examination
      * @param dictionary dictionary containing possible substitutions
      * @param dictionary_size size of dictionary
      */
-    void print_smallest_distance_words(char** word, char** dictionary, int dictionary_size) {
+    void print_smallest_distance_words(char** to_analyze_word, char** dictionary, int dictionary_size) {
 
         int smallest_distance = INT8_MAX;
         int current_distance;
@@ -77,7 +77,7 @@
         pick = (char*) malloc(sizeof (char)* 30);
 
         for (i = 0; i < dictionary_size; i++) {
-            current_distance = edit_distance_strings(*word, dictionary[i]);
+            current_distance = edit_distance_strings(*to_analyze_word, dictionary[i]);
 
             if(current_distance == 0) {
                 smallest_distance = current_distance;
@@ -99,7 +99,7 @@
 
         }
 
-        printf("%s \n", *word);
+        printf("%s \n", *to_analyze_word);
 
         for(int i = 0; i < distances_length; i++) {
             if(distances[i] == 0) {
