@@ -177,17 +177,6 @@ void free_array_first_field(Record **array, int size) {
     }
 }
 
-//Frees array memory
-
-void free_array(Record **array, int size) {
-    int i;
-    for (i = 0; i < size; i++) {
-        free(array[i]);
-    }
-    free(array);
-}
-
-
 /**
  * Sorting wrapper, executes 3 sortings one for each type of data (string, int, float) and registers execution time extremely dependent on k value
  * @param array actual array to be sorted
@@ -250,7 +239,7 @@ int main() {
 
     sort_array(array, array_size, k);
 
-    free_array(array,array_size);
+    free(array);
 
     return 0;
 }
