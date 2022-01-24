@@ -22,10 +22,10 @@
             try {
                 toTestGraph = DataUtils.loadGraph(DataUtils.loadData(filename));
                 returnedForest = Kruskal.tryKruskal(toTestGraph);
-                distance = DataUtils.getTotalForestDistance(toTestGraph);
+                distance = DataUtils.getTotalForestDistance(returnedForest);
 
                 System.out.println("Total distance in this minimal forest is: " + distance/1000);
-                System.out.println("Total number of edges in this forest is: " + toTestGraph.graphEdgeSize());
+                System.out.println("Total number of edges in this forest is: " + returnedForest.graphEdgeSize());
                 System.out.println("Total number of nodes in this forest is: " + returnedForest.graphNodeSize());
 
             } catch (Exception ex) {

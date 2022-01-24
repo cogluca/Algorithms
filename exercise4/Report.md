@@ -89,7 +89,7 @@ Fonte dataset:
 
 L'MST prodotto dall'algoritmo di Kruskal partendo da un grafo ciclico risulta avere 18.637 archi, 18640 nodi e la distanza totale è di 89.942,695 km.
 
-Gli archi vengono ridotti da un clamoroso 48.055 ad 18.637, una differenza di 29.418 archi, la distanza, data dalle etichette degli archi, viene ridotta da 437.496,12km a 18.637km, viene quindi ridotta a circa il 4,26% della distanza totale. Una ottimizzazione in termini di distanza impressionante.
+Gli archi vengono ridotti da un clamoroso 48.055 ad 18.637, una differenza di 29.418 archi, la distanza, data dalle etichette degli archi, viene ridotta da 437.496,12km a 89942.695km, viene quindi ridotta a circa il 20.55% della distanza totale. Una ottimizzazione in termini di distanza impressionante.
 
 ![Untitled](./staticresources/FinalResult.png)
 
