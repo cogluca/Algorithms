@@ -72,7 +72,6 @@
 
         distances_length = 0;
 
-
         curated_words = (char**) malloc(sizeof(char*) * dictionary_size);
         distances = (int*) malloc(sizeof (int) * 30);
         pick = (char*) malloc(sizeof (char)* 30);
