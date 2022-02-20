@@ -1,4 +1,4 @@
-    package exercise4.datastructure;
+    package KruskalOnGraph.datastructure;
 
     import org.junit.Before;
     import org.junit.Test;

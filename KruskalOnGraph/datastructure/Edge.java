@@ -1,4 +1,4 @@
-    package exercise4.datastructure;
+    package KruskalOnGraph.datastructure;
 
     public class Edge<T,L> {
 

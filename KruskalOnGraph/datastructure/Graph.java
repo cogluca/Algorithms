@@ -1,4 +1,4 @@
-    package exercise4.datastructure;
+    package KruskalOnGraph.datastructure;
 
     import java.util.ArrayList;
     import java.util.Collection;

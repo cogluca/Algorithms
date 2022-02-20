@@ -1,7 +1,7 @@
-    package exercise4;
+    package KruskalOnGraph;
 
-    import exercise4.datastructure.Graph;
-    import exercise4.utils.DataUtils;
+    import KruskalOnGraph.datastructure.Graph;
+    import KruskalOnGraph.utils.DataUtils;
 
     import java.util.Scanner;
 

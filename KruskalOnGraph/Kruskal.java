@@ -1,10 +1,10 @@
-    package exercise4;
+    package KruskalOnGraph;
 
-    import exercise3.UnionFindSet;
-    import exercise4.datastructure.Compare;
-    import exercise4.datastructure.Edge;
-    import exercise4.datastructure.Graph;
-    import exercise4.datastructure.Node;
+    import UnionFindSet.UnionFindSet;
+    import KruskalOnGraph.datastructure.Compare;
+    import KruskalOnGraph.datastructure.Edge;
+    import KruskalOnGraph.datastructure.Graph;
+    import KruskalOnGraph.datastructure.Node;
 
     import java.util.ArrayList;
     import java.util.Collections;

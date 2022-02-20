@@ -1,7 +1,7 @@
-    package exercise4.utils;
+    package KruskalOnGraph.utils;
 
-    import exercise4.datastructure.Edge;
-    import exercise4.datastructure.Graph;
+    import KruskalOnGraph.datastructure.Edge;
+    import KruskalOnGraph.datastructure.Graph;
 
     import java.io.BufferedReader;
     import java.io.IOException;

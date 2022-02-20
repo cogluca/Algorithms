@@ -1,4 +1,4 @@
-    package exercise3;
+    package UnionFindSet;
 
     import java.util.HashMap;
 
